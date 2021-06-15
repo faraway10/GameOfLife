@@ -17,31 +17,25 @@ public class GameOfLife {
         byte[][] currentFrame = new byte[height][width];
         byte[][] newFrame = new byte[height][width];
 
-
-        switch(choice){
+        if(choice == 1) {
             // Показать планер
-            case 1:
-                for (int i = 0; i < height; i++) {
-                    for (int j = 0; j < width; j++) {
-                       currentFrame[i][j] = 0;
-                    }
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    currentFrame[i][j] = 0;
                 }
-
-                currentFrame[0][2] = 1;
-                currentFrame[2][2] = 1;
-                currentFrame[2][3] = 1;
-                currentFrame[1][3] = 1;
-                currentFrame[1][4] = 1;
-                break;
-
+            }
+            currentFrame[0][2] = 1;
+            currentFrame[2][2] = 1;
+            currentFrame[2][3] = 1;
+            currentFrame[1][3] = 1;
+            currentFrame[1][4] = 1;
+        } else {
             // Хаотичное заполнение
-            default:
                 for (int i = 0; i < height; i++) {
                     for (int j = 0; j < width; j++) {
-                            currentFrame[i][j] = (byte) ThreadLocalRandom.current().nextInt(0, 2);
+                        currentFrame[i][j] = (byte) ThreadLocalRandom.current().nextInt(0, 2);
                     }
                 }
-                break;
         }
 
         while (true) {
